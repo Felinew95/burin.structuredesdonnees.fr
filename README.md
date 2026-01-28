@@ -1,4 +1,4 @@
-# **Site Web : Structures des donnée**
+# **Site Web : Structures des données**
 
 *Un site pédagogique dédié aux structures des données*
 
