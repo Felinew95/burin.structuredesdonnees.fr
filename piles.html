@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <!--Tête-->
+    <head>
+        <!--Métadonnées et titre de la page-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Structure de données : Piles</title>
+        <!--favicon-->
+        <link rel="icon" type="image/png" href="./images/favicon.png">
+
+        <meta name="description" content="Page de présentation de la structure de données pile">
+        <meta name="keywords" content="Structures de données, Programmation, Piles, Pile">
+        <meta name="author" content="Alexandre Burin et Tauseef Ahmed">
+
+        <!--Lien avec le fichier style css -->
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <!--Le corps-->
+    <body>
+        <!--L'entête-->
+        <header>
+            <img class="logo" src="./images/logo.png" alt="Logo du site">
+            <h1>Structure de données : Piles</h1>
+        </header>
+
+        <!--Menu de navigation-->
+        <nav>
+            <ul class="menu">
+                <li><a href="./index.html"> Accueil </a> </li>
+                <li> <a href="./listeschainees.html"> Listes Chaînées </a> </li>
+                <li> <a href="./piles.html">Piles</a> </li>
+                <li> <a href="./files.html">Files</a> </li>
+                <li> <a href="./arbresbinaire.html"> Arbres Binaire </a> </li>
+            </ul>
+        </nav>
+
+    <!--Contenu principal-->
+    <main>
+        <!--Section Introduction-->
+        <section>
+            <h2>Qu'est ce qu'une pile ?</h2>
+
+            <p>
+                Une pile est une structure qui permet de ranger des éléments les uns sur les autres, un peu comme une tour. 
+                On ajoute toujours le nouvel élément en haut de la pile, et lorsqu’on veut retirer quelque chose, 
+                c’est toujours celui du dessus qu’on prend. On appelle ce principe <strong>LIFO</strong>, 
+                pour <em>Last In, First Out</em>, c’est-à-dire “dernier arrivé, premier sorti”.
+            </p>
+
+            <p>
+                Imaginez une pile d’assiettes dans votre cuisine. Vous mettez la première assiette sur le fond, 
+                puis vous posez la suivante dessus, puis encore une autre. Si vous voulez prendre une assiette pour manger, 
+                vous prenez celle du dessus. Il est impossible de prendre celle du milieu sans enlever celles qui sont au-dessus. 
+                Tout doit suivre l’ordre de la pile.
+            </p>
+
+            <p>
+                On peut faire la même chose avec une pile de livres ou de cartes : chaque nouvel élément est ajouté sur le dessus, 
+                et le dernier ajouté sera le premier que vous pourrez prendre. Ça peut paraître simple, mais ce principe est très utile !
+                En informatique, on utilise des piles pour plein de choses ! C'est ce qu'on va voir en détail dans cette page.
+            </p>
+
+            <figure>
+                <img class="images" src="./images/pagepile/pile.png" alt="Représentation d'une pile">
+                <figcaption>Exemple d’une pile : chaque nouvel élément est ajouté au sommet et retiré en dernier.</figcaption>
+            </figure>
+
+            <table>
+                <caption><strong>Opérations principales d’une pile</strong></caption>
+                <thead>
+                    <tr>
+                        <th>Opérations</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Empiler</td>
+                        <td>Ajouter un élément au sommet d'une pile</td>
+                    </tr>
+                    <tr>
+                        <td>Dépiler</td>
+                        <td>Retirer l’élément du sommet d'une pile</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                Par exemple, en langage <strong>C</strong>, une représentation d'une pile d'entiers peut être :
+            </p>
+
+<pre><code>
+typedef struct {
+    int capacite;
+    int hauteur;
+    int* tab;
+}Pile;
+
+</code></pre>
+
+        </section>
+        <!--Fin de l'introduction-->
+
+        <!--Section utilisations principales des piles-->
+
+        <section>
+            <h2>Principales utilisations des piles</h2>
+
+            <p>
+                Les piles permettent de gérer des éléments ou des actions dans un ordre précis : le dernier ajouté est le premier à être retiré. 
+                Cette logique est utilisée dans de nombreux programmes et applications.
+            </p>
+
+            <article>
+                <h3>1. Appels de fonctions et gestion de mémoire</h3>
+
+                <p>
+                    Chaque fonction appelée dans un programme doit conserver certaines informations : variables locales, paramètres et adresse de retour. 
+                    Ces informations sont stockées dans une <strong>pile d’exécution</strong>. Cela permet à l’ordinateur de revenir exactement là où il s’était arrêté lorsque la fonction se termine.
+                </p>
+
+                <h4>Exemple : Fonction récursive factorielle</h4>
+                <p>
+                    Prenons la fonction récursive <strong>factorielle</strong>, qui calcule le produit de tous les nombres de 1 jusqu’à n. 
+                    Chaque appel à la fonction est empilé pour se souvenir des variables et de l’endroit où revenir après l’exécution.
+                </p>
+
+                <figure>
+                    <img class="images" id="image_pile_factorielle" src="./images/pagepile/pop_from_stack.png" alt="Pile d’exécution factorielle">
+                    <figcaption>Pile d’exécution pendant les appels récursifs de factorielle</figcaption>
+                </figure>
+
+                <h4>Explication étape par étape de l'appel de la fonction <code>factorielle(n)</code> pour <code>n = 5</code> </h4>
+                <ol>
+                    <li>Appel de <code>factorielle(5)</code> → informations empilées sur la pile.</li>
+                    <li>Appel de <code>factorielle(4)</code> → empilé au-dessus.</li>
+                    <li>Appel de <code>factorielle(3)</code> → empilé au sommet de la pile.</li>
+                    <li>Appel de <code>factorielle(2)</code> → empilé au sommet.</li>
+                    <li>Appel de <code>factorielle(1)</code> → empilé au sommet (condition de fin atteinte).</li>
+                    <li>Retour de <code>factorielle(1)</code> → dépilé, valeur retournée à factorielle(2).</li>
+                    <li>Retour de <code>factorielle(2)</code> → dépilé, calcul de 2 * 1 = 2.</li>
+                    <li>Retour de <code>factorielle(3)</code> → dépilé, calcul de 3 * 2 = 6.</li>
+                    <li>Retour de <code>factorielle(4)</code> → dépilé, calcul de 4 * 6 = 24.</li>
+                    <li>Retour de <code>factorielle(5)</code> → dépilé, calcul final 5 * 24 = 120.</li>
+                </ol>
+
+                <p>
+                    <strong>Remarque sur la gestion de mémoire :</strong>  
+                    Chaque fois qu’une fonction est appelée, la mémoire nécessaire pour ses variables locales et paramètres est réservée dans la pile d’exécution. 
+                    Quand la fonction se termine, cette mémoire est libérée automatiquement. 
+                    C’est pour ça que la pile est très pratique pour gérer les fonctions récursives  : elle organise la mémoire de manière temporaire et ordonnée.  
+                    Cependant, si trop de fonctions sont empilées sans retour (comme dans une récursion infinie), la pile peut se remplir et provoquer un <strong>Stack Overflow</strong>.
+                </p>
+
+            </article>
+
+
+            <article>
+                <h3>2. Évaluation d’expressions et calculatrices</h3>
+                <p>
+                    Les piles sont très utiles pour calculer des expressions mathématiques, notamment lorsqu’on veut s’assurer que les opérations se font dans le bon ordre. 
+                    Par exemple, une expression comme <code>3 + 4 * 2</code> doit être évaluée en respectant les priorités des opérateurs.
+                </p>
+                <p>
+                    Les calculatrices scientifiques utilisent ce principe : elles empilent les nombres et les opérateurs dans une pile afin de résoudre correctement les calculs. 
+                    Les programmes informatiques peuvent aussi convertir des expressions d’un format infixe (comme on écrit habituellement) en format postfixé ou préfixé pour faciliter le calcul.
+                </p>
+
+                <figure>
+                    <img class="images" id="image_pile_evalExp" src="./images/pagepile/evaluation_exp.jpg" alt="Pile pour évaluation d'expression">
+                    <figcaption>Utilisation d’une pile pour évaluer une expression mathématique</figcaption>
+                </figure>
+
+                <h4>Exemple : calcul de l’expression 3 + 4 * 2 avec une pile</h4>
+                <ol>
+                    <li>Lire le premier nombre <code>3</code> → empilé sur la pile.</li>
+                    <li>Lire l’opérateur <code>+</code> → empilé sur la pile.</li>
+                    <li>Lire le nombre <code>4</code> → empilé sur la pile.</li>
+                    <li>Lire l’opérateur <code>*</code> → empilé sur la pile.</li>
+                    <li>Lire le nombre <code>2</code> → empilé sur la pile.</li>
+                    <li>Évaluer l’opération au sommet selon la priorité → dépiler <code>4</code> et <code>2</code> puis appliquer <code>*</code>, résultat <code>8</code>.</li>
+                    <li>Dépiler l’opérateur <code>+</code> et le nombre <code>3</code>, puis ajouter <code>8</code> → résultat final <code>11</code>.</li>
+                </ol>
+
+                <p>
+                    Ces étapes montre comment la pile organise temporairement les nombres et opérateurs pour que les calculs soient effectués correctement. 
+                    Le dernier élément ajouté à la pile est le premier à être utilisé pour l’évaluation, respectant ainsi le principe LIFO.
+                </p>
+
+                <p>
+                    Les piles sont donc fondamentales dans les calculatrices, les interprètes et les compilateurs, car elles permettent de gérer facilement les expressions complexes et les priorités des opérations.
+                </p>
+                
+            </article>
+
+            <article>
+                <h3>3. Annuler et rétablir (Undo / Redo)</h3>
+                <p>
+                    Dans beaucoup de logiciels, les piles sont utilisées pour gérer l’historique des actions de l’utilisateur.
+                    Chaque action effectuée est ajoutée au sommet d’une pile appelée <strong>pile Undo</strong>.
+                    La dernière action effectuée est donc la première à pouvoir être annulée.
+                </p>
+
+                <p>
+                    Lorsque l’utilisateur clique sur <strong>Annuler</strong>, la dernière action est retirée de la pile Undo
+                    et placée dans une seconde pile appelée <strong>pile Redo</strong>.
+                    Cela permet, si besoin, de rétablir cette action plus tard.
+                </p>
+
+                <h4>Exemple : </h4>
+                <ol>
+                    <li>L’utilisateur écrit le mot <strong>"Bonjour"</strong> → action empilée dans la pile Undo.</li>
+                    <li>Il met le mot en <strong>gras</strong> → action empilée.</li>
+                    <li>Il ajoute un point à la fin → action empilée.</li>
+                    <li>Cliquer sur <strong>Annuler</strong> retire la dernière action (ajout du point) de la pile Undo et la place dans la pile Redo.</li>
+                    <li>Cliquer sur <strong>Rétablir</strong> replace cette action dans la pile Undo et l’exécute à nouveau.</li>
+                </ol>
+
+                <p>
+                    Ce fonctionnement repose entièrement sur le principe des piles : le dernier changement effectué est toujours le premier à être annulé ou rétabli.
+                </p>
+
+                <p><strong>Exemples logiciels :</strong> Word, Google Docs, Photoshop.</p>
+            </article>
+        </section>
+
+        <!--Lien vers la page Liste et File-->
+        <span class="lien_vers_page">
+            <span class="lien_vers_page_precedente">
+                <img class="fleche" src="./images/fleche_inversee.png" alt="Flèche inversée">
+                <a href="./listeschainees.html">Vers les listes</a>
+            </span>
+
+            <span class="lien_vers_page_suivante">
+                <a href="./files.html">Vers les files</a>
+                <img class="fleche" src="./images/fleche.png" alt="Flèche">
+            </span>
+        </span>
+
+    </main>
+
+    <!--Pied de page-->
+    <footer>
+        <span id="copyright"> &copy; 2026 structuresdesdonnees.fr - Tous droits réservés.</span>
+        <br>
+        <span id="auteur">
+            Burin Alexandre &amp; Ahmed Tauseef
+        </span>
+    </footer>
+    <!--Fin Pied de page-->
+</body>
+<!--Fin de corps-->
+
+</html>

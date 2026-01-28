@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    <!--Tête-->
+    <head>
+        <!--Métadonnées et titre de la page-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title> Structure de données : Files </title>
+
+        <!--favicon-->
+        <link rel="icon" type="image/png" href="./images/favicon.png">
+
+        <meta name="description" content ="Page de présentation sur les files">
+        <meta name="keywords" content = "Structure De Données,Programmation,Files,File">
+        <meta name="author" content="Alexandre Burin et Tauseef Ahmed">  
+
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+
+        <!--Tête-->
+        <header>
+            <img class="logo" src="./images/logo.png" alt="Logo du site">
+            <h1>Structure de données : Files</h1>
+        </header>
+
+        <!--Menu de navigation-->
+        <nav>
+            <ul class="menu">
+                <li><a href="./index.html">Accueil</a></li>
+                <li><a href="./listeschainees.html">Listes Chaînées</a></li>
+                <li><a href="./piles.html">Piles</a></li>
+                <li><a href="./files.html">Files</a></li>
+                <li><a href="./arbresbinaire.html">Arbres Binaire</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!--Introduction-->
+            <section>
+                <h2> Qu'est ce qu'une file ?</h2>
+
+                <p>
+                    Une <em>file</em> est une structure de données abstraite qui organise les éléments selon le principe FIFO 
+                    (<em>First In, First Out</em>), traduit en français par <strong>« premier entré, premier sorti »</strong>. 
+                    Cela signifie que le premier élément ajouté à la file sera le premier à en être retiré, et que les nouveaux éléments sont ajoutés à la fin de la file. 
+                    Cette organisation permet de traiter les données dans l’ordre exact de leur arrivée, ce qui est essentiel dans de nombreux systèmes informatiques.
+                </p>
+
+                <p>
+                    Les <em>files</em> se comportent un peu comme une file d’attente dans la vie réelle. 
+                    Par exemple, devant un guichet, les usagers arrivent en queue de file et quittent la file par sa tête. 
+                    Chaque personne attend son tour, et aucun élément ne peut «sauter» la file. 
+                </p>
+
+                <figure>
+                    <img class="images" src="./images/pagefile/FIFO_PEPS.png" alt="Représentation d'une file">
+                    <figcaption>
+                        Illustration : Exemple de représentation d'une file 
+                    </figcaption>
+                </figure>
+
+                <p>
+                    Voici un exemple d'implémentation d'un élément dans une file d'entiers dans le langage <strong>C</strong> : 
+                </p>
+                
+<pre><code>
+typedef struct {
+    int capacite; // Capacité maximale de la file
+    int taille; // Nombre d'éléments actuellement dans la file
+    int* file; // Tableau dynamique pour stocker les éléments
+}*File;
+
+</code></pre>
+                <p>
+                    Ou encore un autre exemple de l'implémentation d'une file dans le langage <strong>Python</strong>:
+                </p>
+                    
+<pre><code>
+class File:
+    def __init__(self):
+        self.file = [] # Liste qui représente la file 
+
+</code></pre>
+            
+                <p>Cette structure de données permet d’effectuer les opérations de base suivantes :</p>
+
+                <table>
+                    <caption>Opérations principales d’une file</caption>
+                    <thead>
+                        <tr>
+                            <th>Opération</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Enfiler</td>
+                            <td>
+                                Ajoute un nouvel élément à la fin de la file. Respecte le principe FIFO, le premier élément ajouté reste en tête et le nouveau devient le dernier.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Défiler</td>
+                            <td>
+                                Supprime l’élément en tête de la file. Libère la mémoire et met à jour la tête pour que le prochain élément devienne le premier.
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </section>
+
+            <!--Utilisations des files-->
+            <section>
+                <h2>Principales utilisations des files</h2>
+
+                <p>
+                    Les files sont des structures de données très utiles en informatique, car elles permettent de traiter les éléments dans l’ordre d’arrivée 
+                    (FIFO : <em>First In, First Out</em>). Voici les quatre principales utilisations des files, avec des détails et exemples pour chaque domaine :
+                </p>
+
+                <article>
+                    <h3>1. Gestion des processus</h3>
+
+                    <p>
+                        Dans les systèmes d’exploitation, plusieurs programmes peuvent être prêts à s’exécuter en même temps. 
+                        Les fichiers de processus utilisent des files pour organiser ces programmes. 
+                        Les processus sont retirés de la file et exécutés dans l’ordre d’arrivée, ce qui assure une répartition équitable des ressources du processeur.
+                    </p>
+
+                    <p>
+                        <strong>Exemple :</strong> Si trois programmes P1, P2 et P3 arrivent dans la file, par exemple : 
+                    </p>
+
+                    <ol>
+                        <li>P1 arrive dans la file à 9h</li>
+                        <li>P2 arrive dans la file à 10h</li>
+                        <li>P3 arrive dans la file à 8h</li>
+                    </ol>
+
+                    <p>
+                        alors les programmes seront exécutés dans l’ordre P3 &rightarrow; P1 &rightarrow; P2.
+                    </p>
+
+                    <figure>
+                        <img class="images" src="./images/pagefile/ordonnancement-processus-5.png" alt="Représentration d'une file de processus">
+                        <figcaption>
+                            Exemple d'une file de processus 
+                        </figcaption>
+                    </figure>
+                </article>
+            
+                <article>
+                    <h3>2. Gestion des entrées/sorties (E/S)</h3>
+
+                    <p>
+                        Les périphériques lents, comme les imprimantes, les disques durs ou les claviers, ne peuvent pas traiter toutes les requêtes immédiatement. 
+                        Une file permet de stocker les requêtes et de les traiter dans l’ordre d’arrivée, évitant la perte de données et garantissant un traitement séquentiel.
+                    </p>
+
+                    <p>
+                        <strong>Exemple :</strong> Une imprimante reçoit plusieurs documents à imprimer. Chaque document est placé dans la file, et le premier ajouté est imprimé en premier.
+                    </p>
+                </article>
+                
+                <article>
+                    <h3>3. Réseaux informatiques</h3>
+                    
+                    <p>
+                        Dans les réseaux, les routeurs et commutateurs reçoivent des paquets de données de différentes sources. 
+                        Les files permettent de stocker ces paquets temporairement avant de les envoyer vers leur destination, 
+                        garantissant que l’ordre des paquets est respecté et que le réseau ne se surcharge pas.
+                    </p>
+                    
+                    <p>
+                        <strong>Exemple :</strong> Les paquets d’un flux vidéo sont mis dans une file avant d’être transmis au lecteur, évitant les pertes ou désordres.
+                    </p>
+
+                    <figure>
+                        <img class="images" id="file_reseaux" src="./images/pagefile/reseaux.png" alt="Représentation d'une file transportant des paquets">
+                        <figcaption>
+                            Exemple d'une file transportant des paquets
+                        </figcaption>
+                    </figure>
+
+                </article>
+
+                <article>
+                    <h3>4. Algorithmes et programmation événementielle</h3>
+                
+                    <p>
+                        Les files sont largement utilisées dans les algorithmes et la programmation d’interfaces. 
+                        Par exemple, dans le parcours en largeur (BFS) d’un graphe ou d’un arbre, une file stocke les nœuds à explorer dans l’ordre correct. 
+                        De même, les interfaces graphiques utilisent des files d’événements pour gérer les clics, frappes clavier ou mouvements de souris, 
+                        assurant que chaque événement est traité dans l’ordre où il se produit.
+                    </p>
+
+                    <p>
+                        <strong>Exemple :</strong> Dans un jeu, si le joueur clique, appuie sur une touche, puis déplace la souris, 
+                        les événements sont ajoutés à la file et traités dans cet ordre pour que le jeu réagisse correctement.
+                    </p>
+                </article>
+
+            </section>
+
+            <!--Avantages et inconvénients des files-->
+            <section> 
+                <h2>Avantages et inconvénients</h2> 
+                
+                <p>
+                    Les files présentes pleins d'avantages d'utilisations dans plusieurs domaines de l'informatique : 
+                </p>
+
+                <ol>
+                    <li>Les files respectent l'ordre d'arrivé (FIFO). Les éléments sont traités un à un dans l'ordre où ils arrivent, ce qui est juste et prévisible.</li>
+                    <li>
+                        Les files sont simples à mettre en oeuvre. En effet, les files sont simple à programmer grâce à des tableaux ou des listes chainées. 
+                        Par exemple, en Python, une file peut être implémentée avec une liste.
+                    </li>
+                    <li>Les files permettent de gérer les tâches, événements et requêtes dans des systèmes concurrents ou multi-utilisateurs.</li>
+                    <li>Les files sont polyvalentes : elles sont utilisées dans de nombreux domaines : systèmes d’exploitation, réseaux, algorithmes, interfaces graphiques, simulations.</li>
+                </ol>
+                
+                <p>
+                    Cependant, les files présentes aussi des inconvénients d'utilisations : 
+                </p>
+                
+                <ol>
+                    <li>Les files ont un accès limité aux éléments, c'est-à-dire qu'on ne peut retirer que l’élément en tête de file, et on ne peut accéder directement aux autres éléments sans les retirer.</li>
+                    <li>Les files présente un risque de saturation (<em>overflow</em>). Si la file a une capacité limitée, elle peut se remplir et bloquer les nouvelles entrées.</li>
+                    <li>Les performances peuvent variés en fonction de l'implémentation : 
+                        <ul>
+                            <li>
+                                Avec un tableau statique ou dynamique, l’ajout ou le retrait d’éléments peut nécessiter un décalage des données, ce qui peut être coûteux.
+                            </li>
+                            <li>
+                                Les listes chaînées sont plus efficaces pour l’ajout/retrait mais consomment plus de mémoire.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Les files sont moins flexibles pour certaines opérations. Si on a besoin de retirer ou modifier un élément qui n’est pas en tête, la file n’est pas adaptée.</li>
+                    </ol>
+            </section>
+
+            <!--Lien vers la page Pile et Arbres-->
+            <span class="lien_vers_page">
+                <span class="lien_vers_page_precedente">
+                    <img class="fleche" src="./images/fleche_inversee.png" alt="Flèche inversée">
+                    <a href="./piles.html">Vers les piles</a>
+                </span>
+
+                <span class="lien_vers_page_suivante">
+                    <a href="./arbresbinaire.html">Vers les arbres</a>
+                    <img class="fleche" src="./images/fleche.png" alt="Flèche">
+                </span>
+            </span>
+
+        </main>
+
+        <!--Pied de page-->
+        <footer>
+            <span id="copyright"> &copy; 2026 structuresdesdonnees.fr - Tous droits réservés.</span>
+            <br>
+            <span id="auteur">
+                Burin Alexandre &amp; Ahmed Tauseef
+            </span>
+        </footer>
+        <!--Fin Pied de page--> 
+
+    </body>
+
+</html>

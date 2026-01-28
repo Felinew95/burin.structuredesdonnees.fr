@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <!--Tête-->
+    <head>
+         <!--Métadonnées-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--Titre de la page-->
+        <title>Structure de données : Arbres Binaires</title>
+        
+        <!--favicon-->
+        <link rel="icon" type="image/png" href="./images/favicon.png">
+    
+        <meta name="description" content="Page de présentation sur les Arbres Binaires">
+        <meta name="keywords" content="Structures de données, Programmation, Piles, Tableaux, Listes chaînées, Arbres binaires">
+        <meta name="author" content="Alexandre Burin et Tauseef Ahmed">
+
+        <!--Lien avec le fichier css -->
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    
+    <!--Le corps-->
+    <body>
+
+        <!--L'entête-->
+        <header>
+            <img class="logo" src="./images/logo.png" alt="Logo du site">
+            <h1>Structures de données : Arbres Binaire</h1>
+        </header>
+        
+        <!--Menu de navigation-->
+        <nav>
+            <ul class="menu">
+                <li><a href="./index.html">Accueil</a></li>
+                <li><a href="./listeschainees.html">Listes Chaînées</a></li>
+                <li><a href="./piles.html">Piles</a></li>
+                <li><a href="./files.html">Files</a></li>
+                <li><a href="./arbresbinaire.html">Arbres Binaire</a></li>
+            </ul>
+        </nav>
+
+        <!--Contenu principale-->
+        <main>
+
+            <!--Section Introduction aux Arbres Binaires-->
+            <section>
+                
+                <h2>Qu'est ce qu'un Arbre Binaire ? </h2>
+
+                <p>
+                    Un arbre binaire est une structure qui permet d’organiser des éléments de manière hiérarchique, 
+                    un peu comme un arbre avec des branches. Chaque élément, appelé <strong>nœud</strong>, 
+                    peut être relié à deux autres éléments au maximum : un à gauche et un à droite.
+                </p>
+
+                <p>
+                    Imaginez un arbre généalogique. Une personne est au sommet : c’est la <strong>racine</strong>. 
+                    Elle peut avoir deux enfants, puis chacun de ces enfants peut aussi en avoir deux, et ainsi de suite. 
+                    Chaque personne correspond à un nœud, et les liens entre elles représentent les branches de l’arbre.
+                </p>
+
+                <p>
+                    Dans un arbre binaire, on part toujours de la <strong>racine</strong>, puis on descend vers les enfants. 
+                    Les nœuds qui n’ont pas d’enfants sont appelés des <strong>feuilles</strong>. 
+                    Cette organisation permet de structurer les données de façon claire et logique.
+                </p>
+
+                <p>
+                    En informatique, les arbres binaires sont très utilisés pour rechercher, trier et stocker des données efficacement.
+                </p>
+
+                <figure>
+                    <img class="images" src="./images/pagearbresbinaire/arbre_definition.gif" alt="Arbre binaire">
+                    <figcaption>Arbre binaire : racine, nœuds et feuilles</figcaption>
+                </figure>
+
+                <p>
+                    Par exemple, en langage <strong>C</strong>, une représentation d'un arbre binaire avec des valeurs entières peut être :
+                </p>
+
+<!--Code-->
+<pre><code>
+typedef struct noeud {
+    int element;
+    struct noeud* filsG;
+    struct noeud* filsD;
+}
+
+</code></pre>
+            
+            </section>
+            
+            <!--Section Arbre Binaire de Recherche-->
+            <section>
+                
+                <h2>Les Arbres Binaires de Recherche (ABR)</h2>
+
+                <p>
+                    Les arbres binaires de recherche sont un type particulier d’arbre binaire qui respecte une règle importante.
+                </p>
+
+                <p>
+                    Pour chaque nœud :
+                </p>
+
+                <ul>
+                    <li>Les valeurs plus petites ou égales sont placées dans le sous-arbre gauche</li>
+                    <li>Les valeurs strictement plus grandes sont placées dans le sous-arbre droit</li>
+                </ul>
+
+                <p>
+                    Cette règle permet de rechercher rapidement une valeur dans l’arbre.
+                </p>
+
+                <figure>
+                    <img class="images" id="ABR" src="./images/pagearbresbinaire/ABR.png" alt="Arbre binaire de recherche">
+                    <figcaption>Représentation d'un arbre binaire de recherche</figcaption>
+                </figure>
+
+                <p>
+                    Par exemple, si la valeur 7 est la racine, toutes les valeurs inférieures à 7 seront placées à gauche,
+                    et toutes les valeurs supérieures à 7 seront placées à droite.
+                    Chaque sous-arbre respecte exactement la même règle.
+                </p>
+
+            </section>
+            
+        <!--Section Parcours de Arbre Binaire-->
+            <section>
+                <h2>Les parcours d’un arbre binaire</h2>
+
+                <p>
+                    Parcourir un arbre binaire signifie visiter tous ses nœuds dans un certain ordre.
+                    Les parcours permettent d’afficher, de trier ou de traiter les données contenues dans l’arbre.
+                </p>
+
+                <article>
+                    <h3>1. Parcours en profondeur</h3>
+
+                    <p>Il existe trois parcours en profondeur :</p>
+
+                    <ul>
+                        <li><strong>Parcours préfixe</strong> : Racine → Gauche → Droite</li>
+                        <li><strong>Parcours infixe</strong> : Gauche → Racine → Droite</li>
+                        <li><strong>Parcours postfixe</strong> : Gauche → Droite → Racine</li>
+                    </ul>
+
+                    <figure>
+                        <img class="images" id="ABR_parcours_profondeur" src="./images/pagearbresbinaire/parcours_en_profondeur.png" alt="Arbre binaire de recherche">
+                        <figcaption>Parcours en profondeur : préfixe, infixe, postfixe</figcaption>
+                    </figure>
+
+                    <p>
+                        Le parcours infixe est particulièrement important pour les ABR,
+                        car il permet d’afficher les valeurs dans l’ordre croissant.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>2. Parcours en largeur</h3>
+
+
+                    <p>
+                        Le parcours en largeur ou encore BFS en anglais (Breadth First Search) consiste à visiter les nœuds niveau par niveau,
+                        de gauche à droite. Il utilise généralement une <strong><a href="./files.html">file</a></strong> .
+                    </p>
+
+                    <figure>
+                        <img class="images" id="ABR_parcours_largeur" src="./images/pagearbresbinaire/BFS.jpg" alt="Arbre binaire de recherche">
+                        <figcaption>Arbre binaire de recherche parcourue en largeur</figcaption>
+                    </figure>
+
+                    <h4>Explication du parcours en largeur avec l'exemple :</h4>
+
+                    <p>
+                        Donc premièrement on va enfiler la racine qui est 5 ensuite on la visite en la défilant de la file.
+                        On enfile les fils gauche et droit s’ils ne sont pas vides (ici 12 et 13), puis on défile le premier élément (12) 
+                        et on répète le même processus jusqu’à parcourir tout l’arbre niveau par niveau.
+                    </p>
+
+                    <p><em>Résultat</em> : 5,12,13,7,14,2,17,23,27,3,8,11</p>
+
+                </article>            
+            </section>
+            
+            <!--Section Principales utilisation des arbres binaires-->
+            <section>
+                <h2>Principales utilisations des arbres binaires</h2>
+
+                <p>
+                    Les arbres binaires sont utilisés en informatique pour structurer des données
+                    lorsqu’une organisation hiérarchique est nécessaire.
+                    Leur forme permet de représenter naturellement des relations entre éléments
+                    et de traiter les données de manière progressive.
+                </p>
+
+                <article>
+                    <h3>1. Représentation d’expressions arithmétiques</h3>
+
+                    <p>
+                        Les arbres binaires sont très utilisés pour représenter des expressions mathématiques.
+                        Dans ce cas, chaque nœud interne correspond à un opérateur
+                        et chaque feuille correspond à une valeur.
+                    </p>
+
+                    <p>
+                        Par exemple, l’expression <strong>(a + 2) * (b - 5)</strong> peut être représentée
+                        sous forme d’arbre binaire.
+                        Cette représentation permet ensuite d’évaluer l’expression facilement
+                        à l’aide des parcours postfixes ou préfixes.
+                    </p>
+
+                    <p>
+                        Cette méthode est largement utilisée dans les compilateurs et les interprètes
+                        pour analyser et calculer des expressions.
+                    </p>
+                </article>
+                
+                <article>
+                    <h3>2. Arbres de décision</h3>
+
+                    <p>
+                        Les arbres binaires permettent également de représenter des choix successifs.
+                        Chaque nœud représente une question ou une condition,
+                        et chaque branche correspond à une réponse possible.
+                    </p>
+
+                    <p>
+                        Par exemple, dans un programme, un arbre binaire peut décider
+                        si un utilisateur a accès ou non à une fonctionnalité
+                        selon plusieurs conditions successives.
+                    </p>
+
+                    <p>
+                        Ce type d’arbre est souvent utilisé dans les jeux vidéo, les systèmes experts et dans certains algorithmes d’intelligence artificielle.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>3. Compression et codage des données</h3>
+
+                    <p>
+                        Les arbres binaires sont aussi utilisés dans les algorithmes de compression,
+                        comme le codage de Huffman.
+                        Dans ce cas, chaque caractère est représenté par un chemin dans un arbre.
+                    </p>
+
+                
+
+                    <p>
+                        Les caractères les plus fréquents sont placés plus près de la racine,
+                        ce qui permet de réduire la taille globale des données à stocker ou transmettre.
+                    </p>
+                </article>
+                
+                <article>
+                    <h3>4. Optimisation des algorithmes récursifs</h3>
+
+                    <p>
+                        Les arbres binaires sont très utiles pour représenter et comprendre
+                        le fonctionnement des algorithmes récursifs.
+                        Chaque appel récursif peut être vu comme un nœud,
+                        et les appels suivants forment des sous-arbres.
+                    </p>
+
+                    <p>
+                        Par exemple, lors du calcul de la suite de Fibonacci avec une fonction récursive,
+                        le même calcul peut être effectué plusieurs fois inutilement.
+                        Chaque appel récursif génère deux nouveaux appels,
+                        ce qui crée un arbre d’appels très grand et coûteux en temps.
+                    </p>
+
+                    <p>
+                        Pour optimiser cet algorithme, on peut stocker les résultats déjà calculés
+                        dans une structure de données, comme une liste ou un tableau.
+                        Si un résultat est déjà présent, on ne refait pas les appels récursifs
+                        correspondants et on évite ainsi de parcourir plusieurs fois le même sous-arbre.
+                    </p>
+
+                    <p>
+                        Cette technique permet de réduire fortement le nombre d’appels récursifs
+                        et d’améliorer les performances de l’algorithme.
+                        Elle est utilisée dans de nombreux problèmes faisant appel à la récursion.
+                    </p>
+
+                    <figure>
+                        <img class="images" id="arbre_recursif_fibo" src="./images/pagearbresbinaire/FibonnaciArbre.png" alt="Arbre de fibonacci">
+                        <figcaption>Arbre d’appels récursifs Fibonacci</figcaption>
+                    </figure>
+                    
+                    <h4>Explication de l'algorithme : </h4>
+                    <ul>
+                        <li>On vérifie si on a parcours récursive qui est déja fait par exemple on voit que le parcours à partir de la racine 4 vient deux fois</li>
+                        <li>On stocke le résultat dans une liste des parcours effectuer ainsi que des sous parcours effectuer</li>
+                        <li>Si un parcours est déjà effectué, on l’ignore et on remonte dans l’arborescence.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <span class="lien_vers_page">
+                <span class="lien_vers_page_precedente">
+                    <img class="fleche" src="./images/fleche_inversee.png" alt="Flèche inversée">
+                    <a href="./files.html">Vers les files</a>
+                </span>
+            </span>
+
+        </main>
+
+        <!--Pied de Page-->
+        <footer>
+            <span id="copyright"> &copy; 2026 structuresdesdonnees.fr - Tous droits réservés.</span>
+            <br>
+            <span id="auteur">
+                Burin Alexandre &amp; Ahmed Tauseef
+            </span>
+        </footer>
+
+    </body>
+
+</html>
