@@ -1,6 +1,6 @@
 # **Site Web : Structures des données**
 
-*Un site pédagogique dédié aux structures des données *
+*Un site pédagogique dédié aux structures des données*
 
 Ce site web est consacré aux **structures de données** en informatique.  
 Il présente de manière claire et progressive les concepts fondamentaux :
