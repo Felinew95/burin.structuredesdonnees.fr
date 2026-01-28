@@ -13,4 +13,4 @@ Il présente de manière claire et progressive les concepts fondamentaux :
 Chaque structure est expliquée avec des définitions simples, des schémas ou exemples illustrés, des cas d’utilisation concrets, 
 des implémentations basiques pour mieux comprendre leur rôle.
 
-Pour visionner le site : https://felinew95.github.io/burin.structuredesdonnees.fr/
+*Pour visionner le site :* https://felinew95.github.io/burin.structuredesdonnees.fr/
